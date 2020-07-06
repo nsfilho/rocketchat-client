@@ -2,10 +2,10 @@ FROM node:14
 
 WORKDIR /app
 COPY package.json .
-COPY yarn.lock .
 
-RUN yarn install
+RUN npm install
+COPY ./build ./
 
-COPY ./build .
+RUN npm install -g .
 
-ENTRYPOINT [ "yarn", "start" ]
+ENTRYPOINT [ "/bin/bash" ]

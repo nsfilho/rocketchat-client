@@ -1,9 +1,9 @@
 {
-    "name": "rocket-client",
-    "bin": "rc-send",
+    "name": "rc-send",
+    "bin": "index.js",
     "version": "1.0.0",
     "description": "RocketChat Client",
-    "main": "src/index.ts",
+    "main": "index.js",
     "author": "Nelio Santos (nsfilho@icloud.com)",
     "license": "GPLv3.0",
     "dependencies": {
