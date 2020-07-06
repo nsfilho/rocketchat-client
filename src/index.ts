@@ -42,7 +42,9 @@ if (commander.message === undefined) {
     commander.message = process.env.RC_TEXT;
 }
 
-if (commander.result === undefined) commander.result = 'normal';
+if (commander.result === undefined) {
+    commander.result = process.env.RC_RESULT || 'normal';
+}
 
 const message = `Projeto: ${commander.project}
 Versão: ${commander.build}

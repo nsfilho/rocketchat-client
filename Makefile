@@ -1,4 +1,5 @@
 all:
+	yarn build
 	docker build -t nsfilho/rocketchat-client:latest ./
 
 push:

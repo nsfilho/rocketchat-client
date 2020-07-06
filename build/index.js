@@ -74,8 +74,9 @@ if (commander_1.default.message === undefined) {
     }
     commander_1.default.message = process.env.RC_TEXT;
 }
-if (commander_1.default.result === undefined)
-    commander_1.default.result = 'normal';
+if (commander_1.default.result === undefined) {
+    commander_1.default.result = process.env.RC_RESULT || 'normal';
+}
 var message = "Projeto: " + commander_1.default.project + "\nVers\u00E3o: " + commander_1.default.build + "\nStatus: " + commander_1.default.result + "\n" + commander_1.default.message + "\n";
 var sendMessage = function () { return __awaiter(void 0, void 0, void 0, function () {
     var result, err_1;
