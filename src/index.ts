@@ -10,7 +10,8 @@ commander
     .option('-p, --project <project>', 'Project name')
     .option('-r, --result <result>', 'Type of message: success, error, normal')
     .option('-v, --version <build>', 'Build version')
-    .option('-s, --sender <sender>', 'Sender Name');
+    .option('-s, --sender <sender>', 'Sender name')
+    .option('-b, --branch <branch>', 'Branch name');
 
 commander.parse(process.argv);
 
@@ -46,9 +47,15 @@ if (commander.result === undefined) {
     commander.result = process.env.RC_RESULT || 'normal';
 }
 
+if (commander.branch === undefined) {
+    commander.branch = process.env.CI_COMMIT_REF_NAME || 'master';
+}
+
 const message = `Projeto: ${commander.project}
+Branch: ${commander.branch}
 Versão: ${commander.build}
 Status: ${commander.result}
+
 ${commander.message}
 `;
 

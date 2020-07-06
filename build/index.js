@@ -49,7 +49,8 @@ commander_1.default
     .option('-p, --project <project>', 'Project name')
     .option('-r, --result <result>', 'Type of message: success, error, normal')
     .option('-v, --version <build>', 'Build version')
-    .option('-s, --sender <sender>', 'Sender Name');
+    .option('-s, --sender <sender>', 'Sender name')
+    .option('-b, --branch <branch>', 'Branch name');
 commander_1.default.parse(process.argv);
 if (commander_1.default.url === undefined) {
     if (process.env.ROCKETCHAT_URL === undefined) {
@@ -77,7 +78,10 @@ if (commander_1.default.message === undefined) {
 if (commander_1.default.result === undefined) {
     commander_1.default.result = process.env.RC_RESULT || 'normal';
 }
-var message = "Projeto: " + commander_1.default.project + "\nVers\u00E3o: " + commander_1.default.build + "\nStatus: " + commander_1.default.result + "\n" + commander_1.default.message + "\n";
+if (commander_1.default.branch === undefined) {
+    commander_1.default.branch = process.env.CI_COMMIT_REF_NAME || 'master';
+}
+var message = "Projeto: " + commander_1.default.project + "\nBranch: " + commander_1.default.branch + "\nVers\u00E3o: " + commander_1.default.build + "\nStatus: " + commander_1.default.result + "\n\n" + commander_1.default.message + "\n";
 var sendMessage = function () { return __awaiter(void 0, void 0, void 0, function () {
     var result, err_1;
     return __generator(this, function (_a) {
