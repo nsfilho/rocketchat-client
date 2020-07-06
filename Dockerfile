@@ -8,4 +8,4 @@ COPY ./build ./
 
 RUN npm install -g .
 
-ENTRYPOINT [ "/bin/bash" ]
+CMD [ "/bin/bash" ]
